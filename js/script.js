@@ -69,7 +69,7 @@ class ToDo {
     editText.contentEditable = false;
     this.todoData.get(key).value = editText.textContent;
     editBtn.style.display = '';
-    this.render();
+    this.addToStorage();
     editText.removeEventListener('blur', () => {
       this.saveChangings(editText, key, editBtn);
     });
@@ -91,6 +91,8 @@ class ToDo {
       const target = event.target;
       if (target.closest('li')) {
         const  currentKey = target.closest('li').key;
+        console.log(target.closest('li').style.width);
+
         if (target.matches('.todo-complete')) {
           this.completedItem(currentKey);
         }
